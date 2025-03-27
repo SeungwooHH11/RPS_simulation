@@ -1015,5 +1015,5 @@ if __name__=="__main__":
             for j in range(eval_num):
                 data, reward_list, done_list, prob_list, action_list, ave_reward = Simulation.Run_simulation(simulation_day=10, scheduling_mode=scheduling_mode, init_yard=eval_set[j][0].copy(), init_block=eval_set[j][1].copy(), batch_step=5)
                 eval_reward+=ave_reward
-            vessl.log(step=step,pay_load={'eval_reward':eval_reward}) 
+            vessl.log(step=step,pay_load={'eval_reward':eval_reward/eval_num}) 
         
