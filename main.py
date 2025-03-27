@@ -5,7 +5,7 @@ from Location import *
 from Network_DAN import*
 import math
 from Location_Heuristic import *
-
+import vessl
 # stockyard
 # block_number, storaged, stocktime, weight(TP_type_one_hot), created time, source, stock, sink, stage
 # block
@@ -998,7 +998,7 @@ if __name__=="__main__":
     scheduling_mode = 'RL_full'
     train_step=1000
     eval_num=10
-    eval_step=20
+    eval_step=40
     eval_set=[]
     for _ in range(eval_num):
         eval_yard,eval_block=Simulation.Create_problem(10)
@@ -1007,7 +1007,7 @@ if __name__=="__main__":
     K=2
     for step in range(train_step):
         data, reward_list, done_list, prob_list, action_list,ave_reward = Simulation.Run_simulation(simulation_day=10, scheduling_mode=scheduling_mode, init_yard=None, init_block=None, batch_step=20)
-        print(ave_reward)
+        vessl.log(step=step,pay_load={'train_reward':ave_reward}) 
         for _ in range(K):
             ave_loss, v_loss, p_loss=Simulation.ppo.update(data, prob_list, reward_list, action_list, done_list, step, model_dir)
         if step%eval_step==0:
@@ -1015,5 +1015,5 @@ if __name__=="__main__":
             for j in range(eval_num):
                 data, reward_list, done_list, prob_list, action_list, ave_reward = Simulation.Run_simulation(simulation_day=10, scheduling_mode=scheduling_mode, init_yard=eval_set[j][0].copy(), init_block=eval_set[j][1].copy(), batch_step=5)
                 eval_reward+=ave_reward
-            print(eval_reward/eval_num)
-
+            vessl.log(step=step,pay_load={'eval_reward':eval_reward}) 
+        
