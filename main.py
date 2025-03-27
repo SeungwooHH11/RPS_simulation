@@ -1013,7 +1013,7 @@ if __name__=="__main__":
         if step%eval_step==0:
             eval_reward=0
             for j in range(eval_num):
-                data, reward_list, done_list, prob_list, action_list, ave_reward = Simulation.Run_simulation(simulation_day=10, scheduling_mode=scheduling_mode, init_yard=eval_yard[j][0].copy(), init_block=eval_block[j][1].copy(), batch_step=20)
+                data, reward_list, done_list, prob_list, action_list, ave_reward = Simulation.Run_simulation(simulation_day=10, scheduling_mode=scheduling_mode, init_yard=eval_set[j][0].copy(), init_block=eval_set[j][1].copy(), batch_step=5)
                 eval_reward+=ave_reward
             print(eval_reward/eval_num)
 
