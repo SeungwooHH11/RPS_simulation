@@ -220,7 +220,7 @@ class Simulate_yard:
             Block[i, 2] = self.Dis[
                               int(Block[i, 0]), int(Block[i, 1])] / self.TP_speed / self.tardy_high  # processing time
             Block[i, 3] = np.random.randint(0, self.ready_high) / self.tardy_high  # ready time
-            Block[i, 4] = np.random.randint(Block[i, 3] + self.gap, self.tardy_high) / self.tardy_high - Block[
+            Block[i, 4] = np.random.randint(Block[i, 3]*self.tardy_high + self.gap, self.tardy_high) / self.tardy_high - Block[
                 i, 2]  # tardy time
         # Block[Block_located_num:,5:5+self.TP_capacity_type_length] 여기에 적치장 벨류를 넣을지 말지 고민
         Block[Block_located_num:,
@@ -953,7 +953,7 @@ if __name__=="__main__":
         os.makedirs(history_dir)
     device = 'cuda'
     # small problem
-    input_list = [6, 4, (5, 5), (10, 12), (20, 21), 250, 100, 100, 300, [300, 500], 8, (1, 500), 3500, 500, 120, 20, 10]
+    input_list = [6, 4, (5, 5), (13, 14), (20, 21), 250, 100, 100, 300, [300, 500], 8, (1, 500), 3500, 500, 120, 20, 10]
     learning_rate = 0.001
     lmbda = 0.95
     gamma = 1
