@@ -1014,7 +1014,7 @@ if __name__=="__main__":
 
     K = 2
     for step in range(train_step):
-        data, reward_list, done_list, prob_list, action_list, ave_reward = Simulation.Run_simulation(simulation_day=10,
+        data, reward_list, done_list, prob_list, action_list, ave_reward = Simulation.Run_simulation(simulation_day=5,
                                                                                                      scheduling_mode=scheduling_mode,
                                                                                                      init_yard=None,
                                                                                                      init_block=None,
