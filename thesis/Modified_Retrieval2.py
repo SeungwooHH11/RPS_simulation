@@ -72,10 +72,10 @@ def backtracking_dp_with_free_space(grid, goal, labeled_grid, label_num):
     isvisited = []
 
     def is_valid1(x, y):
-        return 0 <= x < n and 0 <= y < m and grid[nx][ny] != -2 and dp[nx][ny] != 1
+        return 0 <= x < n and 0 <= y < m and grid[x][y] != -2 and dp[x][y] != 1
 
     def is_valid2(x, y):
-        return 0 <= x < n and 0 <= y < m and grid[nx][ny] != -2
+        return 0 <= x < n and 0 <= y < m and grid[x][y] != -2
 
     matrix = [[[] for _ in range(m)] for _ in range(n)]
     queue = deque([goal])
