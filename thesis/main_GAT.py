@@ -759,8 +759,7 @@ class Simulate_yard:
             if not possible:
                 mask, need_retrieval, possible = self.Create_mask(self.stock_yard[target_yard].copy(),
                                                                   TP_capa=self.TP_capacity_type_length - 1)
-                print(self.stock_yard[target_yard,:,:,0])
-                print('e2')
+                
             grid_tensor = torch.tensor(
                 self.stock_yard[target_yard, :, :, 2:3 + self.TP_capacity_type_length].reshape(1, self.yard_size[0],
                                                                                                self.yard_size[1], -1),
