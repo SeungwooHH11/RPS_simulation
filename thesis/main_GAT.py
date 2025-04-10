@@ -957,6 +957,27 @@ if __name__=="__main__":
     device = 'cuda'
     # small problem
     input_list = [6, 4, (5, 5), (10, 12), (20, 21), 250, 100, 100, 300, [300, 500], 8, (1, 500), 3500, 500, 120, 20, 10]
+    input_list = [9, 6, (5, 5), (10, 12), (30, 31), 250, 100, 100, 300, [300, 500], 12, (1, 500), 3500, 500, 120, 20, 10]
+    
+    # middle problem
+    # problem, block: 60 pl:15 tp: 12
+    # 0 factory number
+    # 1 yard number
+    # 2 yard size
+    # 3 block number distribution per init yard
+    # 4 source block per day
+    # 5 storage_period_scale
+    # 6 ready high
+    # 7 gap
+    # 8 tardy high
+    # 9 TP capacity type
+    # 10 TP number
+    # 11 Weight distribution
+    # 12 Dis high
+    # 13 Dis low
+    # 14 TP speed
+    # 15 RT weight 15
+    # 16 RT time 30
     learning_rate = 0.001
     lmbda = 0.95
     gamma = 1
