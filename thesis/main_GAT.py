@@ -392,6 +392,7 @@ class Simulate_yard:
                 mask = torch.ones((N, M, 1), device=edge_fea.device)
                 # 벡터화로 mask 업데이트
                 mask[valid_coords[:, 0], valid_coords[:, 1], 0] = 0
+                temp_mask=mask.clone()
                 # 가능한 반출 및 적치 마스킹
                 if transporter[agent][0] < self.TP_capacity_type_length - 1:
                     for crd in valid_coords:
@@ -411,7 +412,8 @@ class Simulate_yard:
                                                                               TP_capa=transporter[agent][0])
                             if not valid:
                                 mask[crd[0], crd[1], 0] = 1
-
+                if mask.sum().item()==N*M:
+                    mask=temp_mask.clone()
                 episode.append(
                     [node_fea.clone(), edge_fea[:, :, :-1].clone(), edge_fea_idx.clone(), distance.clone(),
                      transporter[agent][0],
@@ -956,7 +958,7 @@ if __name__=="__main__":
     device = 'cuda'
     # small problem
     input_list = [6, 4, (5, 5), (10, 12), (20, 21), 250, 100, 100, 300, [300, 500], 8, (1, 500), 3500, 500, 120, 20, 10]
-    input_list = [9, 6, (5, 5), (10, 12), (30, 31), 250, 100, 100, 300, [300, 500], 12, (1, 500), 3500, 500, 120, 20, 10]
+    #input_list = [9, 6, (5, 5), (10, 12), (30, 31), 250, 100, 100, 300, [300, 500], 12, (1, 500), 3500, 500, 120, 20, 10]
     
     # middle problem
     # problem, block: 60 pl:15 tp: 12
