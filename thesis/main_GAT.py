@@ -682,10 +682,14 @@ class Simulate_yard:
             sw = 0  # do while
 
             temp_tardy = 0
-
+            trial=0
+            max_try=50
             while (((num_valid_coords <= 0) | (sw == 0))):
                 sw = 1
-
+                trial+=1
+                if trial==max_try:
+                    print('got you')
+                    return reward_sum, tardy_sum, ett_sum, rt_sum, event, episode, actions, probs, rewards, dones
                 next_agent, mintime = self.select_agent(transporter)
 
                 transporter, edge_fea_idx, node_fea, edge_fea, tardiness, tardy = self.next_state(
