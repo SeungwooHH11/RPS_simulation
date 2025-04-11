@@ -1042,6 +1042,7 @@ if __name__=="__main__":
                                                                                                      init_block=None,
                                                                                                      batch_step=20)
         vessl.log(step=step, payload={'train_reward': ave_reward})
+        print(step)
         for _ in range(K):
             ave_loss, v_loss, p_loss = Simulation.ppo.update(data, prob_list, reward_list, action_list, done_list, step,
                                                              model_dir)
